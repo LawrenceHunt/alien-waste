@@ -1,28 +1,30 @@
-import React from 'react'
-import Sky from './Sky'
-import Ground from './Ground'
-import CannonBase from './CannonBase'
+import React from 'react';
+import PropTypes from 'prop-types';
+import Sky from './Sky';
+import Ground from './Ground';
+import CannonBase from './CannonBase';
+import CannonPipe from './CannonPipe';
 
-const Canvas = () => {
-  const viewBox = [
-    window.innerWidth / -2,   // min x
-    100 - window.innerHeight, // min y
-    window.innerWidth,        // width
-    window.innerHeight        // height
-  ];
+const Canvas = (props) => {
+  const viewBox = [window.innerWidth / -2, 100 - window.innerHeight, window.innerWidth, window.innerHeight];
   return (
     <svg
       id="aliens-go-home-canvas"
       preserveAspectRatio="xMaxYMax none"
+      onMouseMove={props.trackMouse}
       viewBox={viewBox}
     >
       <Sky />
       <Ground />
+      <CannonPipe rotation={props.angle} />
       <CannonBase />
-      <circle cx={0} cy={0} r={50} />
     </svg>
   );
 };
 
+Canvas.propTypes = {
+  angle: PropTypes.number.isRequired,
+  trackMouse: PropTypes.func.isRequired,
+};
 
-export default Canvas
+export default Canvas;
