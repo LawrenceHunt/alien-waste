@@ -1,6 +1,7 @@
 import React from 'react'
 import Sky from './Sky'
 import Ground from './Ground'
+import CannonBase from './CannonBase'
 
 const Canvas = () => {
   const viewBox = [
@@ -17,6 +18,7 @@ const Canvas = () => {
     >
       <Sky />
       <Ground />
+      <CannonBase />
       <circle cx={0} cy={0} r={50} />
     </svg>
   );
